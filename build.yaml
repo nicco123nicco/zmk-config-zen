@@ -56,12 +56,12 @@ include:
 
     # nice
   - board: nice_nano_v2
-    shield: corne_left nice_view_adapter nice_view
+    shield: corne_left
     cmake-args: -DCONFIG_ZMK_KEYBOARD_NAME=\"Nice_Corne_View\"
     artifact-name: nice_corne_left
     # shield: corne_left # for OLED no nice_view
   - board: nice_nano_v2
-    shield: corne_right nice_view_adapter nice_view
+    shield: corne_right
     artifact-name: nice_corne_right
     # shield: corne_right # for OLED no nice_view
 
