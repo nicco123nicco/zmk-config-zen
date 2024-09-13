@@ -24,20 +24,20 @@ layers:
   - ↓
   - ↑
   - →
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - RGB COLOR HSB(270,100,20)
+  - RGB COLOR HSB(310,100,20)
   - Shift
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - RGB TOG
+  - RGB EFF
+  - RGB SAI
+  - RGB SAD
+  - RGB BRD
+  - RGB HUI
+  - RGB HUD
+  - RGB BRI
+  - RGB BRD
+  - RGB BRD
+  - RGB BRI
   - Gui
   - {type: held}
   - ␣
