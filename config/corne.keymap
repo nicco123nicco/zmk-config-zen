@@ -10,7 +10,6 @@
 #define BLUETOOTH 1
 #define GAMING 2
 
-/ {// TAP_DANCE settings
 #define TAP_SPEED 200
 
 // MACROS to make the the code easier to read
@@ -36,6 +35,9 @@
 #define TD_SCLOCK   &td16               // (S)LSHIFT CAPSLOCK (Sticky shift)
 #define TO_GAMING      &gaming_layout      // to gaming
 #define TO_DVORAK      &dvorak_layout      // to gaming
+
+/ {// TAP_DANCE settings
+
     behaviors {
         gaming_layout: gaming_layout {
             compatible = "zmk,behavior-hold-tap";
