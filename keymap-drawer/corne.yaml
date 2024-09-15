@@ -1,6 +1,6 @@
 layout: {qmk_keyboard: corne_rotated, qmk_layout: LAYOUT_split_3x6_3}
 layers:
-  Dvorak: ['&td0', '&td8', '&td9', '&td10', P, Y, F, G, C, R, L, ⌫, '&td16', A, O, E, U, I, D, H, T, N, S, ⌦, CTRL, '&td4', '&td13', J, K, X, B, M, W, V, Z, '&gaming_layout',
+  Dvorak: ['&td0', '&td8', '&td9', '&td10', P, Y, F, G, C, R, L, ⌫, '&td16', A, O, E, U, I, D, H, T, N, S, ⌦, Ctrl, '&td4', '&td13', J, K, X, B, M, W, V, Z, '&gaming_layout',
     Settings/Media, '&td12', '&td2', ENT, GUI, ALT]
   Settings/Media:
   - {t: ▽, type: trans}
