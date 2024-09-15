@@ -1,62 +1,71 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 
-&led_strip { chain-length = <27>; };
+#define BASE 0
+#define NAV 1
+#define SYM 2
+#define BT 3
 
-
-#define DVORAK 0
-#define BLUETOOTH 1
-#define GAMING 2
-
+// TAP_DANCE settings
 #define TAP_SPEED 200
 
 // MACROS to make the the code easier to read
 // include name or reference in keymap
 // Format: 
 //      name        reference  key1 key2 
-#define TD_TAB      &td0                // TAB ESC
-#define TD_CAPLOCK  &td1                // LSHIFT CAPSLOCK 
-#define TD_SPC      &td2                // SPACE ENTER 
-#define TD_SLSH     &td3                // SLASH QMARK
-#define TD_QUOTE    &td4                // QUOTE DOUBLE_QUOTES
-#define TD_EQL      &td5                // EQUAL PLUS
-#define TD_BSLS     &td6                // BACKSLASH PIPE 
-#define TD_MINUS    &td7                // MINUS UNDERSCORE
-#define TD_SCLN     &td8                // SEMICOLON COLON 
-#define TD_COMM     &td9                // COMMA LESS_THAN 
-#define TD_DOT      &td10               // PERIOD GREATER_THAN 
-#define TD_BACKF    &td11               // GRAVE TILDE
-#define TD_ALT      &td12               // LALT GUI
-#define TD_ARR      &td13               // Q AT (@)
-#define TD_ATCAT    &td14               // AT CARET 
-#define TD_TAW      &td15               // TAB LWIN
-#define TD_SCLOCK   &td16               // (S)LSHIFT CAPSLOCK (Sticky shift)
-#define TO_GAMING      &gaming_layout      // to gaming
-#define TO_DVORAK      &dvorak_layout      // to gaming
+#define TD_TAB      &td0    // TAB ESC
+#define TD_CAPLOCK  &td1    // LSHIFT CAPSLOCK 
+#define TD_SPC      &td2    // SPACE ENTER 
+#define TD_SLSH     &td3    // SLASH QMARK
+#define TD_QUOTE    &td4    // QUOTE DOUBLE_QUOTES
+#define TD_EQL      &td5    // EQUAL PLUS
+#define TD_BSLS     &td6    // BACKSLASH PIPE 
+#define TD_MINUS    &td7    // MINUS UNDERSCORE
+#define TD_SCLN     &td8    // SEMICOLON COLON 
+#define TD_COMM     &td9    // COMMA LESS_THAN 
+#define TD_DOT      &td10   // PERIOD GREATER_THAN 
+#define TD_BACKF    &td11   // GRAVE TILDE
+#define TD_ALT      &td12   // LALT GUI
+#define TD_ARR      &td13   // Q AT (@)
+#define TD_ATCAT    &td14   // AT CARET 
+#define TD_TAW      &td15   // TAB LWIN
+#define TD_SCLOCK   &td16   // (S)LSHIFT CAPSLOCK (Sticky shift)
 
-/ {// TAP_DANCE settings
+// include &name in keymap to use
+// FORMAT
+//   natural --> (on shift)
+//   number --> symbols | number code --> symbol code 
+// one_lpar    1 --> (  | N1 --> LPAR
+// two_par     2 --> )  | N2 --> RPAR
+// three_rbrc  3 --> }  | N3 --> RBRC
+// four_pl     4 --> ]  | N4 --> PLUS
+// five_lbrc   5 --> {  | N5 --> RSFT
+// six_rbkt    6 --> ]  | N6 --> RBKT
+// seven_lbkt  7 --> [  | N7 --> LBKT
+// eight_exlm  8 --> !  | N8 --> EXCL
+// nine_equal  9 --> =  | N9 --> EQUAL
+// zero_s      0 --> *  | N0 --> STAR
 
-    behaviors {
-        gaming_layout: gaming_layout {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <TAP_SPEED>;
-            quick_tap_ms = <0>;
-            require-prior-idle-ms = <125>;
-            flavor = "tap-preferred";
-            bindings = <&to GAMING>, <&kp ESC>;
-        };
-        dvorak_layout: dvorak_layout {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick_tap_ms = <0>;
-            require-prior-idle-ms = <125>;
-            flavor = "tap-preferred";
-            bindings = <&to DVORAK>, <&kp ESC>;
-        };
+/*
+// Sticky key config if desired
+&sk {
+    //release-after-ms = <2000>;
+    quick-release;
+};
+
+*/
+
+/ {
+
+
+    behaviors{  
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0"; 
@@ -251,21 +260,78 @@
                 mods=<(MOD_LSFT|MOD_RSFT)>;
         };
     };
-    keymap {
-        compatible = "zmk,keymap";
-            default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |TAB:ESC   | ; : | , < | . > |  P  |  Y  |         | F   |  G   |  C  |  R  |  L  | BKSP |
-            // | CTRL     |  A  |  O  |  E  |  U  |  I  |         |  D  |  H   |  T  |  N  |  S  |  DEL |
-            // | LSFT:CAP |' "  | q @ | J   | K   |  X  |         |  B  |  M   |  W  |  V  |  Z  | TAB  |
-            //                        | GUI | LWR | SPC |         | ENT | RSE  | ALT |
-            bindings = <
-                TD_TAB     TD_SCLN  TD_COMM TD_DOT &kp P &kp Y                   &kp F &kp G  &kp C     &kp R   &kp L    &kp BSPC
-                &kp LCTRL  &kp A    &kp O   &kp E  &kp U &kp I                   &kp D &kp H  &kp T     &kp N   &kp S    &kp DEL
-                TD_SCLOCK TD_QUOTE TD_ARR  &kp J  &kp K &kp X                   &kp B &kp M  &kp W     &kp V   &kp Z    TD_TAW
-                                        TD_ALT  &mo 1 TD_SPC                   TD_SPC &mo 2 &kp RALT
-                    >;
-            };
+
+    // LAYERS
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+// -----------------------------------------------------------------------------------------
+// |TAB:ESC   | ; : | , < | . > |  P  |  Y  |         | F   |  G   |  C  |  R  |  L  | BKSP |
+// | CTRL     |  A  |  O  |  E  |  U  |  I  |         |  D  |  H   |  T  |  N  |  S  |  DEL |
+// | LSFT:CAP |' "  | q @ | J   | K   |  X  |         |  B  |  M   |  W  |  V  |  Z  | TAB  |
+//                        | GUI | LWR | SPC |         | ENT | RSE  | ALT |
+                        bindings = <
+   TD_TAB     TD_SCLN  TD_COMM TD_DOT &kp P &kp Y                   &kp F &kp G  &kp C     &kp R   &kp L    &kp BSPC
+   &kp LCTRL  &kp A    &kp O   &kp E  &kp U &kp I                   &kp D &kp H  &kp T     &kp N   &kp S    &kp DEL
+  TD_SCLOCK TD_QUOTE TD_ARR  &kp J  &kp K &kp X                   &kp B &kp M  &kp W     &kp V   &kp Z    TD_TAW
+                             TD_ALT  &mo 1 TD_SPC                   TD_SPC &mo 2 &kp RALT
+                        >;
+                };
+                lower_layer {
+// -----------------------------------------------------------------------------------------
+// |  ESC   |  7   |  5  |  3  |  1  |  9  |            |  0  |  2  |  4  |  6  |  8  |      |
+// | F11    |  F1  |  F2 |  F3 |  F4 |  F5 |            | LFT | DWN |  UP | RGT |     |      |
+// | SHFT   |  F6  |  F7 |  F8 |  F9 |  F10|            |HOME | PGDN| PGUP| END |     |      |
+//                       |     |     |     |            |     |     |     |
+                        bindings = <
+   &trans     &seven_lbkt   &five_lbrc  &three_rbrc &one_lpar   &nine_equal          &zero_s    &two_par    &four_pl    &six_rbkt   &eight_exlm &trans
+   &kp F11    &kp F1        &kp F2      &kp F3      &kp F4      &kp F5               &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT   &trans      &trans
+   &trans     &kp F6        &kp F7      &kp F8      &kp F9      &kp F10              &kp HOME   &kp PG_DN   &kp PG_UP   &kp END     &trans      &trans
+                          	            &trans      &trans      &trans               &trans     &trans      &trans
+                        >;
+                };
+
+                raise_layer {
+// -----------------------------------------------------------------------------------------
+// |  ESC |  [  |  {  |  }  |  (  |  =  |       |  *  |  )  |  +  |  ]  |  !  | DEL  |
+// | CTRL |  ~  |  %  |  `  | / ? | @ ^ |       |     |     |     |     |     |      |
+// | SHFT |  $  |  &  |  #  | - _ | \ | |       |     |     |     |     |     |      |
+//                    | GUI |     | SPC |       | ENT |     | ALT |
+                        bindings = <
+   &trans     &kp LBKT    &kp LBRC     &kp RBRC     &kp LPAR    &kp EQUAL       &kp STAR    &kp RPAR  &kp PLUS  &kp RBKT  &kp EXCL   &trans    
+   &kp LCTRL  &kp TILDE   &kp PRCNT    &kp GRAVE    TD_SLSH     TD_ATCAT        &trans      &trans    &trans    &trans    &trans     &trans
+   &trans     &kp DLLR    &kp AMPS     &kp HASH     TD_MINUS    TD_BSLS         &trans      &trans    &trans    &trans    &trans     &trans
+                    	               &trans       &trans      &trans          &trans      &trans    &trans
+                        >;
+                };
+
+
+// bt_media_layer: BT functions and media controls
+                bt_media_layer {
+// -----------------------------------------------------------------------------------------
+// |  ESC |     |     |     |     |     |   |         |     |         |     |   |      |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT     | PRV |  Play/P | NXT |   |      |
+// | SHFT |     |     |     |     |     |   | MUTE    | VOL-| VOL+|   |     |   |      |
+//                    | GUI |     | SPC |   | ENT     |     | ALT |
+                        bindings = <
+   &kp ESC    &trans       &trans       &trans       &trans       &trans                &trans          &trans         &trans       &trans     &trans &trans
+   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4          &kp LEFT        &kp C_PREV     &kp C_PP     &kp C_NEXT &trans &trans
+   &trans  &trans       &trans       &trans       &trans       &trans                &kp C_MUTE      &kp C_VOL_DN   &kp C_VOL_UP &trans     &trans &trans
+                          	            &kp LGUI     &trans       &kp SPACE             &kp RET         &trans          &kp RALT
+                        >;
+                }; 
+
+ 
+        };
+};
         // dvorak {
         //     display-name = "Dvorak";
         //     bindings = <
@@ -300,5 +366,3 @@
         //                                         &kp LGUI  &kp LALT &kp SPACE   &kp RET   &trans    &kp RALT
         //     >;
         // };
-    };
-};
