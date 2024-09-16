@@ -190,30 +190,30 @@
             tapping-term-ms = <TAP_SPEED>; 
             bindings = <&sk LSHIFT>, <&kp CAPSLOCK>;
             }; 
-        to_layer: hold_tap_layer_switch {
-                compatible = "zmk,behavior-hold-tap";
-                #binding-cells = <2>;
-                tapping-term-ms = <TAP_SPEED>;         // Adjust tapping term for tap vs. hold
-                quick_tap_ms = <0>;              // Ignore very fast taps (optional)
-                require-prior-idle-ms = <TAP_IDLE>;    // Avoid false triggers during quick sequences
-                flavor = "tap-preferred";         // "tap-preferred" means a quick tap sends the key first
-                bindings = <&to>, <&kp>;          // First argument is hold behavior (layer switch), second is tap behavior (normal key)
-            };
-        to_dvrk_layer: hold_tap_dvrk_layer {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&to DVRK>, <&kp TAB>;
-        };
+        // to_layer: hold_tap_layer_switch {
+        //         compatible = "zmk,behavior-hold-tap";
+        //         #binding-cells = <2>;
+        //         tapping-term-ms = <TAP_SPEED>;         // Adjust tapping term for tap vs. hold
+        //         quick_tap_ms = <0>;              // Ignore very fast taps (optional)
+        //         require-prior-idle-ms = <TAP_IDLE>;    // Avoid false triggers during quick sequences
+        //         flavor = "tap-preferred";         // "tap-preferred" means a quick tap sends the key first
+        //         bindings = <&to>, <&kp>;          // First argument is hold behavior (layer switch), second is tap behavior (normal key)
+        //     };
+        // to_dvrk_layer: hold_tap_dvrk_layer {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     tapping-term-ms = <200>;
+        //     flavor = "tap-preferred";
+        //     bindings = <&to DVRK>, <&kp TAB>;
+        // };
         
-        to_gg_layer: hold_tap_gg_layer {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&to GG>, <&kp TAB>;
-        };
+        // to_gg_layer: hold_tap_gg_layer {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     tapping-term-ms = <200>;
+        //     flavor = "tap-preferred";
+        //     bindings = <&to GG>, <&kp TAB>;
+        // };
         // create the shifts of dvorak 
         seven_lbkt: seven_lbkt{ 
                 compatible = "zmk,behavior-mod-morph";
