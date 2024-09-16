@@ -12,7 +12,7 @@
 #define NAV 1
 #define SYM 2
 #define BT 3
-#define GG 4
+// #define GG 4
 
 // TAP_DANCE settings
 #define TAP_SPEED 200
