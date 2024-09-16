@@ -8,7 +8,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define BASE 0
+#define DVRK 0
 #define NAV 1
 #define SYM 2
 #define BT 3
@@ -198,21 +198,21 @@
             require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
             };
-        to_dvrk_layer: hold_tap_dvrk_layer {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&to>, <&kp>;
-        };
+        // to_dvrk_layer: hold_tap_dvrk_layer {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     tapping-term-ms = <200>;
+        //     flavor = "tap-preferred";
+        //     bindings = <&to>, <&kp>;
+        // };
         
-        to_gg_layer: hold_tap_gg_layer {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&to>, <&kp>;
-        };
+        // to_gg_layer: hold_tap_gg_layer {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     tapping-term-ms = <200>;
+        //     flavor = "tap-preferred";
+        //     bindings = <&to>, <&kp>;
+        // };
         // create the shifts of dvorak 
         seven_lbkt: seven_lbkt{ 
                 compatible = "zmk,behavior-mod-morph";
@@ -306,7 +306,7 @@
                         bindings = <
    TD_TAB     TD_SCLN  TD_COMM TD_DOT &kp P &kp Y                   &kp F &kp G  &kp C     &kp R   &kp L    &kp BSPC
    &kp LCTRL  &kp A    &kp O   &kp E  &kp U &kp I                   &kp D &kp H  &kp T     &kp N   &kp S    &kp DEL
-  TD_SCLOCK TD_QUOTE TD_ARR  &kp J  &kp K &kp X                   &kp B &kp M  &kp W     &kp V   &kp Z    $to_gg_layer 4 TAB
+  TD_SCLOCK TD_QUOTE TD_ARR  &kp J  &kp K &kp X                   &kp B &kp M  &kp W     &kp V   &kp Z    $to GG
                              TD_ALT  &mo 1 TD_SPC                   TD_SPC &mo 2 &kp RALT
                         >;
                 };
@@ -364,7 +364,7 @@
                         bindings = <
    &kp ESC    &trans       &trans       &trans       &trans       &trans                &trans          &trans         &trans       &trans     &trans &trans
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4          &kp LEFT        &kp C_PREV     &kp C_PP     &kp C_NEXT &trans &trans
-   &trans  &trans       &trans       &trans       &trans       &trans                &kp C_MUTE      &kp C_VOL_DN   &kp C_VOL_UP &trans     &trans $to_gg_layer 0 TAB
+   &trans  &trans       &trans       &trans       &trans       &trans                &kp C_MUTE      &kp C_VOL_DN   &kp C_VOL_UP &trans     &trans &to DVRK
                           	            &kp LGUI     &trans       &kp SPACE             &kp RET         &trans          &kp RALT
                         >;
                 }; 
