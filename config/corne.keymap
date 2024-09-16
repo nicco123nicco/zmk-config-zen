@@ -189,7 +189,21 @@
             tapping-term-ms = <TAP_SPEED>; 
             bindings = <&sk LSHIFT>, <&kp CAPSLOCK>;
             }; 
-
+        to_dvrk_layer: hold_tap_dvrk_layer {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&to DVRK>, <&kp TAB>;
+        };
+        
+        to_gg_layer: hold_tap_gg_layer {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&to GG>, <&kp TAB>;
+        };
         // create the shifts of dvorak 
         seven_lbkt: seven_lbkt{ 
                 compatible = "zmk,behavior-mod-morph";
