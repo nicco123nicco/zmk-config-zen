@@ -1,6 +1,6 @@
 layout: {qmk_keyboard: corne_rotated, qmk_layout: LAYOUT_split_3x6_3}
 layers:
-  default: ['&td0', '&td8', '&td9', '&td10', P, Y, F, G, C, R, L, ⌫, Ctrl, A, O, E, U, I, D, H, T, N, S, ⌦, '&td16', '&td4', '&td13', J, K, X, B, M, W, V, Z $to 4,
+  default: ['&td0', '&td8', '&td9', '&td10', P, Y, F, G, C, R, L, ⌫, Ctrl, A, O, E, U, I, D, H, T, N, S, ⌦, '&td16', '&td4', '&td13', J, K, X, B, M, W, V, Z, '&td15',
     '&td12', lower, '&td2', '&td2', raise, Alt]
   lower:
   - {t: ▽, type: trans}
@@ -39,8 +39,8 @@ layers:
   - End
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
   - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -85,8 +85,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
   - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   bt_media:
   - Esc
@@ -125,11 +125,11 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: Gui, type: held}
-  - {t: ▽, type: trans}
+  - Gui
+  - {type: held}
   - ␣
-  - {t: ⏎, type: held}
-  - {t: ▽, type: trans}
+  - ⏎
+  - {type: held}
   - Alt
   gaming_media:
   - Esc
@@ -167,7 +167,7 @@ layers:
   - Vol Up
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: default, h: toggle}
+  - {t: ▽, type: trans}
   - Gui
   - {t: ▽, type: trans}
   - ␣
