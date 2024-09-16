@@ -8,15 +8,13 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define DVRK 0
+#define BASE 0
 #define NAV 1
 #define SYM 2
 #define BT 3
-// #define GG 4
 
 // TAP_DANCE settings
 #define TAP_SPEED 200
-#define TAP_IDLE 125
 
 // MACROS to make the the code easier to read
 // include name or reference in keymap
@@ -39,7 +37,6 @@
 #define TD_ATCAT    &td14   // AT CARET 
 #define TD_TAW      &td15   // TAB LWIN
 #define TD_SCLOCK   &td16   // (S)LSHIFT CAPSLOCK (Sticky shift)
-#define TO_LAYER    &to_layer   
 
 // include &name in keymap to use
 // FORMAT
@@ -190,30 +187,7 @@
             tapping-term-ms = <TAP_SPEED>; 
             bindings = <&sk LSHIFT>, <&kp CAPSLOCK>;
             }; 
-        // to_layer: hold_tap_layer_switch {
-        //         compatible = "zmk,behavior-hold-tap";
-        //         #binding-cells = <2>;
-        //         tapping-term-ms = <TAP_SPEED>;         // Adjust tapping term for tap vs. hold
-        //         quick_tap_ms = <0>;              // Ignore very fast taps (optional)
-        //         require-prior-idle-ms = <TAP_IDLE>;    // Avoid false triggers during quick sequences
-        //         flavor = "tap-preferred";         // "tap-preferred" means a quick tap sends the key first
-        //         bindings = <&to>, <&kp>;          // First argument is hold behavior (layer switch), second is tap behavior (normal key)
-        //     };
-        // to_dvrk_layer: hold_tap_dvrk_layer {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     #binding-cells = <2>;
-        //     tapping-term-ms = <200>;
-        //     flavor = "tap-preferred";
-        //     bindings = <&to DVRK>, <&kp TAB>;
-        // };
-        
-        // to_gg_layer: hold_tap_gg_layer {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     #binding-cells = <2>;
-        //     tapping-term-ms = <200>;
-        //     flavor = "tap-preferred";
-        //     bindings = <&to GG>, <&kp TAB>;
-        // };
+
         // create the shifts of dvorak 
         seven_lbkt: seven_lbkt{ 
                 compatible = "zmk,behavior-mod-morph";
@@ -228,28 +202,28 @@
                 #binding-cells = <0>; 
                 bindings = <&kp N5>,<&kp LBRC>;
                 mods=<(MOD_LSFT|MOD_RSFT)>;
-            };
+        };
         three_rbrc: three_rbrc {
                 compatible = "zmk,behavior-mod-morph";
                 label="THREE_RBRC";
                 #binding-cells = <0>; 
                 bindings = <&kp N3>,<&kp RBRC>;
                 mods=<(MOD_LSFT|MOD_RSFT)>;
-            };
+        };
         one_lpar: one_lpar {
                 compatible = "zmk,behavior-mod-morph";
                 label="ONE_LPAR";
                 #binding-cells = <0>; 
                 bindings = <&kp N1>,<&kp LPAR>;
                 mods=<(MOD_LSFT|MOD_RSFT)>;
-            };
+        };
         nine_equal: nine_equal {
                 compatible = "zmk,behavior-mod-morph";
                 label="nine_equal";
                 #binding-cells = <0>; 
                 bindings = <&kp N9>,    <&kp EQUAL>;
                 mods=<(MOD_LSFT|MOD_RSFT)>;
-            };
+        };
         zero_s: zero_star { 
                 compatible = "zmk,behavior-mod-morph";
                 label="ZERO_STAR";
@@ -263,59 +237,55 @@
                 #binding-cells = <0>; 
                 bindings = <&kp N2>,<&kp RPAR>;
                 mods=<(MOD_LSFT|MOD_RSFT)>;
-            };
+        };
         four_pl: four_plus {
                 compatible = "zmk,behavior-mod-morph";
                 label="FOUR_PLUS";
                 #binding-cells = <0>; 
                 bindings = <&kp N4>,<&kp PLUS>;
                 mods=<(MOD_LSFT|MOD_RSFT)>;
-            };
+        };
         six_rbkt: six_rbkt {
                 compatible = "zmk,behavior-mod-morph";
                 label="six_rbkt";
                 #binding-cells = <0>; 
                 bindings = <&kp N6>,<&kp RBKT>;
                 mods=<(MOD_LSFT|MOD_RSFT)>;
-            };
+        };
         eight_exlm: eight_exlm {
                 compatible = "zmk,behavior-mod-morph";
                 label="EIGHT_EXLM";
                 #binding-cells = <0>; 
                 bindings = <&kp N8>,    <&kp EXCL>;
                 mods=<(MOD_LSFT|MOD_RSFT)>;
-            };
+        };
     };
 
     // LAYERS
-    conditional_layers {                                                                                                                
+    conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
             if-layers = <1 2>;
             then-layer = <3>;
-            };
+        };
     };
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
-                    display-name = "Dvorak";
-
 // -----------------------------------------------------------------------------------------
 // |TAB:ESC   | ; : | , < | . > |  P  |  Y  |         | F   |  G   |  C  |  R  |  L  | BKSP |
 // | CTRL     |  A  |  O  |  E  |  U  |  I  |         |  D  |  H   |  T  |  N  |  S  |  DEL |
 // | LSFT:CAP |' "  | q @ | J   | K   |  X  |         |  B  |  M   |  W  |  V  |  Z  | TAB  |
 //                        | GUI | LWR | SPC |         | ENT | RSE  | ALT |
                         bindings = <
-    TD_TAB     TD_SCLN  TD_COMM TD_DOT &kp P &kp Y                   &kp F &kp G  &kp C     &kp R   &kp L    &kp BSPC
-    &kp LCTRL  &kp A    &kp O   &kp E  &kp U &kp I                   &kp D &kp H  &kp T     &kp N   &kp S    &kp DEL
-    TD_SCLOCK TD_QUOTE TD_ARR  &kp J  &kp K &kp X                   &kp B &kp M  &kp W     &kp V   &kp Z    &trans
+   TD_TAB     TD_SCLN  TD_COMM TD_DOT &kp P &kp Y                   &kp F &kp G  &kp C     &kp R   &kp L    &kp BSPC
+   &kp LCTRL  &kp A    &kp O   &kp E  &kp U &kp I                   &kp D &kp H  &kp T     &kp N   &kp S    &kp DEL
+  TD_SCLOCK TD_QUOTE TD_ARR  &kp J  &kp K &kp X                   &kp B &kp M  &kp W     &kp V   &kp Z    TD_TAW
                              TD_ALT  &mo 1 TD_SPC                   TD_SPC &mo 2 &kp RALT
                         >;
                 };
                 lower_layer {
-                    display-name = "numeric";
-
 // -----------------------------------------------------------------------------------------
 // |  ESC   |  7   |  5  |  3  |  1  |  9  |            |  0  |  2  |  4  |  6  |  8  |      |
 // | F11    |  F1  |  F2 |  F3 |  F4 |  F5 |            | LFT | DWN |  UP | RGT |     |      |
@@ -330,8 +300,6 @@
                 };
 
                 raise_layer {
-                    display-name = "Symbols";
-
 // -----------------------------------------------------------------------------------------
 // |  ESC |  [  |  {  |  }  |  (  |  =  |       |  *  |  )  |  +  |  ]  |  !  | DEL  |
 // | CTRL |  ~  |  %  |  `  | / ? | @ ^ |       |     |     |     |     |     |      |
@@ -348,8 +316,6 @@
 
 // bt_media_layer: BT functions and media controls
                 bt_media_layer {
-                    display-name = "Bluetooth";
-
 // -----------------------------------------------------------------------------------------
 // |  ESC |     |     |     |     |     |   |         |     |         |     |   |      |
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT     | PRV |  Play/P | NXT |   |      |
@@ -363,14 +329,6 @@
                         >;
                 }; 
 
-//   gaming {
-//             display-name = "Gaming";
-//             bindings = <
-//                 TD_TAB    &kp Q     &kp W     &kp E     &kp R    &kp T       &trans     &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP     &trans     &kp BSPC
-//                 &kp LSHIFT &kp A     &kp S     &kp D     &kp F    &kp G       &kp C_PREV &kp C_PP   &kp C_NEXT  &trans     &trans     &trans
-//                 &kp CTRL   &kp Z     &kp X     &kp C     &kp V    &kp B       &trans     &trans      &trans     &trans  &trans     &trans
-//                                                 &kp LGUI  &kp LALT &kp SPACE   &kp RET   &trans    &kp RALT
-//             >;
-//             };
+ 
+        };
 };
-       
