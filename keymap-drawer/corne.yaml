@@ -131,7 +131,7 @@ layers:
   - {t: ⏎, type: held}
   - {t: ▽, type: trans}
   - Alt
-  gming_media:
+  gaming_media:
   - Esc
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
