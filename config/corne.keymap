@@ -331,16 +331,21 @@
                 }; 
 
  gaming_media_layer {
+
+    //  &kp ESC &kp Q &kp W &kp E &kp R  // WASD or gaming controls
+    //                &kp LSHIFT &kp A &kp S &kp D &kp F
+    //                &kp Z &kp X &kp C &kp SPACE &kp LCTRL
+    //                &kp LEFT &kp DOWN &kp UP &kp RIGHT &tog 3
 // -----------------------------------------------------------------------------------------
 // |  ESC |     |     |     |     |     |   |         |     |         |     |   |      |
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT     | PRV |  Play/P | NXT |   |      |
 // | SHFT |     |     |     |     |     |   | MUTE    | VOL-| VOL+|   |     |   |      |
 //                    | GUI |     | SPC |   | ENT     |     | ALT |
                         bindings = <
-   &kp ESC    &trans       &trans       &trans       &trans       &trans                &trans          &trans         &trans       &trans     &trans &trans
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4          &kp LEFT        &kp C_PREV     &kp C_PP     &kp C_NEXT &trans &trans
-   &trans  &trans       &trans       &trans       &trans       &trans                &kp C_MUTE      &kp C_VOL_DN   &kp C_VOL_UP &trans     &trans &trans
-                          	            &kp LGUI     &trans       &kp SPACE             &kp RET         &trans          &kp RALT
+   &kp ESC      &kp Q       &kp W       &kp E       &kp R       &kp T               $trans      $trans          $trans       $trans      $trans  $trans
+   TD_SCLOCK    &kp A       &kp S       &kp D       &kp F       &kp G               &kp C_PREV  &kp C_PP     &kp C_NEXT  $trans      $trans  $trans
+   &kp LCTRL    &kp Z       &kp X       &kp C       &kp V       &kp B               &kp C_MUTE  &kp C_VOL_DN    &kp C_VOL_UP $trans      $trans  $trans
+                          	            &kp LGUI     &kp TAB       &kp SPACE    &kp RET         $trans          &kp RALT
                         >;
                 }; 
         };
