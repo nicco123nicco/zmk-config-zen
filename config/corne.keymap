@@ -196,7 +196,6 @@
             quick_tap_ms = <0>;              // Ignore very fast taps (optional)
             require-prior-idle-ms = <125>;    // Avoid false triggers during quick sequences
             flavor = "tap-preferred";         // "tap-preferred" means a quick tap sends the key first
-            global-quick-tap = <true>;        // Global setting to force quick taps on all keys (optional)
             bindings = <&to>, <&kp>;          // First argument is hold behavior (layer switch), second is tap behavior (normal key)
         };
         // create the shifts of dvorak 
