@@ -194,7 +194,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
-            bindings = <&to DVRK>, <&kp TAB>;
+            bindings = <&to>, <&kp>;
         };
         
         to_gg_layer: hold_tap_gg_layer {
@@ -202,7 +202,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
-            bindings = <&to GG>, <&kp TAB>;
+            bindings = <&to>, <&kp>;
         };
         // create the shifts of dvorak 
         seven_lbkt: seven_lbkt{ 
