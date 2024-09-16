@@ -330,8 +330,8 @@
                         >;
                 }; 
 
- // gming_media_layer: gaming and media controls
-                gming_media_layer {
+ // gaming_media_layer: gaming and media controls
+                gaming_media_layer {
 // -----------------------------------------------------------------------------------------
 // |  ESC |     |     |     |     |     |   |         |     |         |     |   |      |
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT     | PRV |  Play/P | NXT |   |      |
