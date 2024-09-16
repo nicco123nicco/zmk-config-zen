@@ -363,14 +363,14 @@
                         >;
                 }; 
 
-  gaming {
-            display-name = "Gaming";
-            bindings = <
-                TD_TAB    &kp Q     &kp W     &kp E     &kp R    &kp T       &trans     &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP     &trans     &kp BSPC
-                &kp LSHIFT &kp A     &kp S     &kp D     &kp F    &kp G       &kp C_PREV &kp C_PP   &kp C_NEXT  &trans     &trans     &trans
-                &kp CTRL   &kp Z     &kp X     &kp C     &kp V    &kp B       &trans     &trans      &trans     &trans  &trans     &trans
-                                                &kp LGUI  &kp LALT &kp SPACE   &kp RET   &trans    &kp RALT
-            >;
-            };
+//   gaming {
+//             display-name = "Gaming";
+//             bindings = <
+//                 TD_TAB    &kp Q     &kp W     &kp E     &kp R    &kp T       &trans     &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP     &trans     &kp BSPC
+//                 &kp LSHIFT &kp A     &kp S     &kp D     &kp F    &kp G       &kp C_PREV &kp C_PP   &kp C_NEXT  &trans     &trans     &trans
+//                 &kp CTRL   &kp Z     &kp X     &kp C     &kp V    &kp B       &trans     &trans      &trans     &trans  &trans     &trans
+//                                                 &kp LGUI  &kp LALT &kp SPACE   &kp RET   &trans    &kp RALT
+//             >;
+//             };
 };
        
